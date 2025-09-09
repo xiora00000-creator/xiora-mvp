@@ -1,0 +1,304 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ブランドカラーシステム */
+    --brand-primary: 0 0 0;
+    --brand-secondary: 255 255 255;
+    --brand-accent: 59 130 246;
+    --brand-success: 34 197 94;
+    --brand-warning: 245 158 11;
+    --brand-error: 239 68 68;
+    
+    /* 拡張グレースケール */
+    --gray-50: 249 250 251;
+    --gray-100: 243 244 246;
+    --gray-200: 229 231 235;
+    --gray-300: 209 213 219;
+    --gray-400: 156 163 175;
+    --gray-500: 107 114 128;
+    --gray-600: 75 85 99;
+    --gray-700: 55 65 81;
+    --gray-800: 31 41 55;
+    --gray-900: 17 24 39;
+    --gray-950: 3 7 18;
+    
+    /* ブランド固有の色 */
+    --xiora-space: 15 23 42;
+    --xiora-cosmic: 30 41 59;
+    --xiora-stellar: 51 65 85;
+    --xiora-void: 2 6 23;
+    --xiora-light: 248 250 252;
+    
+    /* アニメーション変数 */
+    --transition-fast: 150ms;
+    --transition-normal: 300ms;
+    --transition-slow: 500ms;
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    /* シャドウシステム */
+    --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    
+    /* ブランド固有のシャドウ */
+    --shadow-cosmic: 0 0 20px rgb(59 130 246 / 0.3);
+    --shadow-stellar: 0 0 30px rgb(15 23 42 / 0.4);
+    --shadow-void: 0 0 40px rgb(2 6 23 / 0.5);
+  }
+  
+  /* ベーススタイル */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-fg;
+  }
+
+  /* フォーカス状態の最適化 */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-focus ring-offset-2 ring-offset-white;
+  }
+
+  /* スムーズなスクロール */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* スキップリンク */
+  .skip-link {
+    @apply absolute -top-10 left-6 bg-fg text-bg px-4 py-2 rounded-md z-50 transition-transform duration-200;
+  }
+
+  .skip-link:focus {
+    @apply top-6;
+  }
+
+  /* フォーカス状態の改善 */
+  .focus-visible-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500;
+  }
+}
+
+@layer components {
+  /* ブランド固有のコンポーネント */
+  .brand-gradient {
+    background: linear-gradient(135deg, rgb(var(--xiora-space)) 0%, rgb(var(--xiora-cosmic)) 50%, rgb(var(--xiora-stellar)) 100%);
+  }
+  
+  .brand-gradient-text {
+    background: linear-gradient(135deg, rgb(var(--xiora-space)) 0%, rgb(var(--xiora-cosmic)) 50%, rgb(var(--xiora-stellar)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .cosmic-border {
+    border: 1px solid rgb(var(--xiora-cosmic) / 0.2);
+    box-shadow: 0 0 20px rgb(var(--xiora-cosmic) / 0.1);
+  }
+  
+  .stellar-glow {
+    box-shadow: 0 0 30px rgb(var(--xiora-stellar) / 0.3);
+  }
+  
+  /* アニメーションクラス */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+  
+  /* ホバーエフェクト */
+  .hover-lift {
+    transition: transform var(--transition-normal) var(--ease-smooth);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+  
+  .hover-glow {
+    transition: box-shadow var(--transition-normal) var(--ease-smooth);
+  }
+  
+  .hover-glow:hover {
+    box-shadow: var(--shadow-cosmic);
+  }
+}
+
+@layer utilities {
+  /* ブランド固有のユーティリティ */
+  .text-brand-primary { color: rgb(var(--brand-primary)); }
+  .text-brand-secondary { color: rgb(var(--brand-secondary)); }
+  .text-brand-accent { color: rgb(var(--brand-accent)); }
+  .text-xiora-space { color: rgb(var(--xiora-space)); }
+  .text-xiora-cosmic { color: rgb(var(--xiora-cosmic)); }
+  .text-xiora-stellar { color: rgb(var(--xiora-stellar)); }
+  
+  .bg-brand-primary { background-color: rgb(var(--brand-primary)); }
+  .bg-brand-secondary { background-color: rgb(var(--brand-secondary)); }
+  .bg-brand-accent { background-color: rgb(var(--brand-accent)); }
+  .bg-xiora-space { background-color: rgb(var(--xiora-space)); }
+  .bg-xiora-cosmic { background-color: rgb(var(--xiora-cosmic)); }
+  .bg-xiora-stellar { background-color: rgb(var(--xiora-stellar)); }
+  
+  .border-brand-primary { border-color: rgb(var(--brand-primary)); }
+  .border-brand-secondary { border-color: rgb(var(--brand-secondary)); }
+  .border-brand-accent { border-color: rgb(var(--brand-accent)); }
+  .border-xiora-space { border-color: rgb(var(--xiora-space)); }
+  .border-xiora-cosmic { border-color: rgb(var(--xiora-cosmic)); }
+  .border-xiora-stellar { border-color: rgb(var(--xiora-stellar)); }
+  
+  /* アニメーションキーフレーム */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* レスポンシブユーティリティ */
+  .container-brand {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-brand {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+  
+  /* タイポグラフィユーティリティ */
+  .font-display {
+    font-family: 'Cormorant Garamond', serif;
+  }
+  
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* スペーシングユーティリティ */
+  .space-brand {
+    @apply space-y-8 sm:space-y-12 lg:space-y-16;
+  }
+  
+  .gap-brand {
+    @apply gap-6 sm:gap-8 lg:gap-12;
+  }
+  
+  /* ホバーエフェクト */
+  .hover-lift {
+    @apply hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  /* テキストグラデーション */
+  .text-gradient {
+    @apply bg-gradient-to-r from-fg to-fg-secondary bg-clip-text text-transparent;
+  }
+
+  /* コンテナ */
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* グリッド */
+  .grid-responsive-2 {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+  }
+
+  .grid-responsive-3 {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+
+  .grid-responsive-4 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6;
+  }
+
+  /* アクセシビリティ */
+  .visually-hidden {
+    @apply sr-only;
+  }
+
+  .skip-to-content {
+    @apply skip-link;
+  }
+
+  /* コントラスト比の確保 */
+  .high-contrast {
+    @apply text-fg bg-bg;
+  }
+
+  .medium-contrast {
+    @apply text-fg-secondary bg-bg-secondary;
+  }
+
+  .low-contrast {
+    @apply text-fg-muted bg-bg-tertiary;
+  }
+}
+
+/* カスタムスクロールバー */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--gray-100));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--xiora-cosmic));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--xiora-stellar));
+}
+
+/* 選択テキストのスタイル */
+::selection {
+  background-color: rgb(var(--brand-accent) / 0.2);
+  color: rgb(var(--brand-primary));
+}
+
+/* ダークモード対応（将来の拡張用） */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-primary: 255 255 255;
+    --brand-secondary: 0 0 0;
+  }
+}

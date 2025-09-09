@@ -1,0 +1,29 @@
+# Xiora - Monotone MVP
+# https://xiora.com
+
+User-agent: *
+Allow: /
+
+# サイトマップ
+Sitemap: https://xiora.com/sitemap.xml
+
+# 画像のクロールを許可
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.png$
+Allow: /*.webp$
+Allow: /*.svg$
+
+# CSSとJavaScriptのクロールを許可
+Allow: /*.css$
+Allow: /*.js$
+
+# 特定のディレクトリを除外
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /private/
+
+# クロール遅延（オプション）
+Crawl-delay: 1
